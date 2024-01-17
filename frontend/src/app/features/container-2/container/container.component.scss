@@ -1,0 +1,23 @@
+.container {
+    min-width: 85vw;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-columns: 100vw;
+    grid-auto-rows: 100vh;
+
+    height: 100vh;
+    overflow: hidden;
+    scroll-snap-type: y mandatory;
+
+    &>* {
+        scroll-snap-align: center;
+    }
+}
+
+@media(max-width:768px) {
+    .container {
+        overflow: auto;
+    }
+}

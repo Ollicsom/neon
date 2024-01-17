@@ -1,0 +1,19 @@
+<!-- <img class="tv-bg" src="../assets/medias/tvbg.jpg"> -->
+<div class="container">
+    <div #page>
+        <app-poles></app-poles>
+    </div>
+    <div #page>
+        <app-campagne></app-campagne>
+    </div>
+    <div #page>
+        <app-voyages></app-voyages>
+    </div>
+    <div #page>
+        <app-defis></app-defis>
+    </div>
+    <div #page>
+        <app-partenaire></app-partenaire>
+    </div>
+</div>
+<app-menu (clickMenu)="ScrollTo($event)"></app-menu>

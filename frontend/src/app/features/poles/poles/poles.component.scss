@@ -1,0 +1,45 @@
+.pole {
+    position: absolute;
+    top: 50;
+    opacity: 0;
+}
+
+.cancel {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.pole.active {
+    opacity: 1;
+}
+
+.relative {
+    position: relative;
+    display: flex;
+    width: 25vw;
+    height: 50vh;
+}
+
+.carousel-controls {
+    color: black;
+    font-size: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: rows;
+
+    &>* {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.no-member {
+    grid-column: 1 / 4;
+}

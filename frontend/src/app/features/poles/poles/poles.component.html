@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-between align-items-center h-100" *ngIf="poleView">
+    <fa-icon class="carousel-controls m-5" (click)="setIndex(activeIndex - 1)" [icon]="faChevronLeft">
+    </fa-icon>
+    <div class="relative" (click)="poleView = !poleView">
+        <div *ngFor="let pole of poles; let index = index" class="pole w-100 h-100"
+            [ngClass]="{'active': activeIndex === index}">
+            <div class="card m-2 w-100 h-100" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ pole.name}}</h5>
+                    <p class="card-text">Description du pole</p>
+                    <a href="#" class="btn btn-primary mt-auto">Voir les membres</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <fa-icon class="carousel-controls m-5" (click)="setIndex(activeIndex - 1)" [icon]="faChevronRight">
+    </fa-icon>
+</div>
+
+<div class="d-flex justify-content-between align-items-center h-100 w-100 position-relative" *ngIf="!poleView">
+    <fa-icon class="cancel" (click)="poleView = !poleView" [icon]="faTimes">
+    </fa-icon>
+    <div class="p-5 w-100 grid">
+        <ng-container *ngIf="poles[activeIndex].Membres.length > 0; else noMembre">
+            <div *ngFor="let membre of poles[activeIndex].Membres">
+                <button class="btn btn-lg btn-outline-primary" (click)="openMembreModal(membre)">{{ membre.firstname
+                    }}</button>
+            </div>
+        </ng-container>
+    </div>
+    <ng-template #noMembre>
+        <p class="w-100 h3 no-member">Aucun membre n'appartiens à ce pôle...</p>
+    </ng-template>
+</div>

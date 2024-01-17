@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ membre.firstname }} {{ membre.lastname }}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="dismiss()"></button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="mb-3">
+            <img [src]="membre.photoURL">
+            <p>{{membre.description}}</p>
+        </div>
+    </form>
+</div>

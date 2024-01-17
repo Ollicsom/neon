@@ -1,0 +1,37 @@
+<div class="h-100">
+    <p>Défis</p>
+    <div class="d-flex flex-row justify-content-center align-items-center">
+        <div class="grid m-auto">
+            <h3>Proposition</h3>
+            <p>nom</p>
+            <p>Défi proposé</p>
+            <ng-container *ngFor="let defi of currentDefiArray">
+                <p>{{defi.name}}</p>
+                <p>{{defi.description}}</p>
+            </ng-container>
+            <p class="fleches" (click)="defiCurrentPage === 0 ? null : changePage(false, false)"
+                [ngClass]="{'disabled': defiCurrentPage === 0}">
+                fleche 1</p>
+            <p class="fleches" (click)="defiCurrentPage + 1 === defiLength ? null : changePage(true, false)"
+                [ngClass]="{'disabled': defiCurrentPage + 1 === defiLength}">fleche 2</p>
+            <p class="pagination">{{defiCurrentPage + 1}}/{{defiLength}}</p>
+        </div>
+
+        <div class="grid m-auto">
+            <h3>Réalisé</h3>
+            <p>nom</p>
+            <p>Défi proposé</p>
+            <ng-container *ngFor="let defi of currentEndedDefiArray">
+                <p>{{defi.name}}</p>
+                <p>{{defi.description}}</p>
+            </ng-container>
+            <p class="fleches" (click)="endedDefiCurrentPage === 0 ? null : changePage(false, true)"
+                [ngClass]="{'disabled': endedDefiCurrentPage === 0}">
+                fleche 1</p>
+            <p class="fleches" (click)="endedDefiCurrentPage + 1 === endedDefiLength ? null : changePage(true, true)"
+                [ngClass]="{'disabled': endedDefiCurrentPage + 1 === endedDefiLength}">fleche 2</p>
+            <p class="pagination">{{endedDefiCurrentPage + 1}}/{{endedDefiLength}}</p>
+        </div>
+    </div>
+    <button (click)="openDefiModal()">Proposer un défis</button>
+</div>
