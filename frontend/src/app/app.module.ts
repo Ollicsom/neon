@@ -20,6 +20,7 @@ import { ApiService } from './shared/services/api.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MembreModalComponent } from './features/poles/membre-modal/membre-modal.component';
 import { DefiModalComponent } from './features/defi/defi-modal/defi-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const HttpLoaderFactory = (http: HttpClient) => new TranslateHttpLoader(http, '../assets/i18n/', '.json');
 
@@ -46,6 +47,7 @@ const modules = [
         AppRoutingModule,
         HttpClientModule,
         NgbModule,
+        ReactiveFormsModule,
         TranslateModule.forRoot({
             defaultLanguage: 'fr-FR',
             loader: {

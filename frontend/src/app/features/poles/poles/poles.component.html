@@ -3,7 +3,7 @@
     </fa-icon>
     <div class="relative" (click)="poleView = !poleView">
         <div *ngFor="let pole of poles; let index = index" class="pole w-100 h-100"
-            [ngClass]="{'active': activeIndex === index}">
+            [ngClass]="{'active': activeIndex === index, 'disabled': activeIndex !== index}">
             <div class="card m-2 w-100 h-100" style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="Card image cap">
                 <div class="card-body">

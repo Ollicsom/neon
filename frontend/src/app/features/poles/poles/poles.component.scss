@@ -13,7 +13,42 @@
 }
 
 .pole.active {
-    opacity: 1;
+    // opacity: 1;
+    animation-delay: 0.3s;
+    animation-duration: 0.8s;
+    animation-name: slidein;
+    animation-fill-mode: forwards;
+}
+
+.pole.disabled {
+    animation-duration: 0.8s;
+    animation-name: slideout;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes slidein {
+    from {
+        opacity: 0;
+        transform: translateX(150px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes slideout {
+    from {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
 }
 
 .relative {

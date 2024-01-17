@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Defi } from 'src/app/shared/models/defi.model';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -9,24 +10,41 @@ import { ApiService } from 'src/app/shared/services/api.service';
     styleUrls: ['./defi-modal.component.scss']
 })
 export class DefiModalComponent {
+    form: FormGroup;
 
     constructor(
         private activeModal: NgbActiveModal,
         private apiService: ApiService
-    ) { }
+    ) {
+        this.form = new FormGroup({
+            name: new FormControl(null, Validators.required),
+            description: new FormControl(null, Validators.required)
+        });
+    }
 
     dismiss() {
         this.activeModal.dismiss();
     }
 
     createDefi() {
-        const defi = new Defi();
-        defi.description = 'test post';
-        defi.name = 'SIPEP33';
-        defi.url = 'CACACACACA';
-        this.apiService.createDefi(defi).subscribe(res => {
-            this.activeModal.close(res);
-        });
+        if (this.form.valid) {
+            const defi = new Defi();
+            defi.description = this.description.value;
+            defi.name = this.name.value;
+            this.apiService.createDefi(defi).subscribe(res => {
+                this.activeModal.close(res);
+            });
+        } else {
+            this.form.markAllAsTouched();
+        }
+    }
+
+    get name() {
+        return this.form.get('name');
+    }
+
+    get description() {
+        return this.form.get('description');
     }
 
 }

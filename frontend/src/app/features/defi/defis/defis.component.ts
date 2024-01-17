@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Defi } from 'src/app/shared/models/defi.model';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { DefiModalComponent } from '../defi-modal/defi-modal.component';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-defis',
@@ -21,6 +22,8 @@ export class DefisComponent implements OnInit {
     currentEndedDefiArray: Array<Defi>;
     pageLength = 10;
 
+    faArrowRight = faArrowRight;
+    faArrowLeft = faArrowLeft;
     constructor(
         private apiService: ApiService,
         private modalService: NgbModal
@@ -64,7 +67,7 @@ export class DefisComponent implements OnInit {
                 console.log(result);
                 this.defiList.push(result);
                 this.defiLength = Math.ceil(this.defiList.length / this.pageLength);
-                this.defiCurrentPage = this.defiLength;
+                this.defiCurrentPage = this.defiLength - 1;
                 this.currentDefiArray = [...this.defiList].splice(this.pageLength * this.defiCurrentPage, this.pageLength);
             }
         );
